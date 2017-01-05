@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
+        <style media="screen">
+            body{
+                background-color: black;
+            }
+            .displayDiv{
+                font-family: monospace;
+                text-align: center;
+                position: fixed;
+                background-color: white;
+                width: 40%;
+                left: 30%;
+                top: 5%;
+                padding: 10px;
+                border-radius: 5px;
+            }
+            .box{
+                margin-left: 3px;
+                margin-right: 3px;
+                border-radius: 5px;
+                width:50px;
+                height:50px;
+                display: inline-block;
+            }
+            .box:hover{
+                cursor: pointer;
+            }
+            .colorContainer{
+                text-align: center;
+            }
+        </style>
+    </head>
+    <body>
+
+        <div class='displayDiv'>
+            Click on a color.
+        </div>
+        <div class="colorContainer">
+
+        </div>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+        <script type="text/javascript">
+
+            var total = 255;
+            var interval = 15;
+
+            for (var r = 0; r < total; r = r + interval){
+                for (var g = 0; g < total; g = g + interval){
+                    for (var b = 0; b < total; b = b + interval){
+                        $(".colorContainer").append("<div class=box style='background-color:rgb(" + r + "," + g + "," + b + ")'></div>")
+                    }
+                }
+            }
+
+            $(".box").on('click',function(){
+                var clickedColor = $(this).css("background-color");
+                $(".displayDiv").text(clickedColor)
+            })
+        </script>
+    </body>
+</html>
